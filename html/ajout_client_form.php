@@ -75,7 +75,7 @@
                 <label for="">En couple ?</label>
             </td>
             <td>
-                <input type="radio" id="Oui" name="couple" value="oui" onclick="affiche('1','2','3','4')">
+                <input type="radio" id="Oui" name="couple" value="oui" onclick="affiche('1','2','3','4')" checked>
                 <label for="Oui">Oui</label>
                 <input type="radio" id="non" name="couple" value="non" onclick="pasaffiche('1','2','3','4')">
                 <label for="non">Non</label>

@@ -8,12 +8,11 @@ body{
     background-size: cover;
 }
 
-table
-{
-    background: rgba(64, 64, 64, 0.50);
+table{
+    background: rgba(64, 64, 64, 0.5);
     color: white;
     border-radius: 10px;
-    width: 403px;
+    width: 850px;
     height: 120px;
     top: 50%;
     left: 50%;
@@ -23,13 +22,17 @@ table
     box-sizing: border-box;
 }
 
-
-input, select {
-    padding: 10px 20px;
-    margin: 6px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+td{
+    padding: 19px;
 }
 
+input[type='text'], input[type='date'], input[type='number'], select{
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+input[type='submit']{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(34, 139, 34, 0.85);
+}
