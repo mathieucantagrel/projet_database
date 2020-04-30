@@ -79,7 +79,7 @@ $datetime = date("Y-m-d");
             </tr>
             <tr>
                 <td>
-                    <input type="submit" value="ajouter un rendez-vous">
+                    <input type="submit" value="prendre rendz-vous">
                 </td>
             </tr>
         </table>

@@ -50,8 +50,8 @@ if ($count === 0)
 
 if (($verif === TRUE) && ($verif2 === TRUE))
 {
-    $sql = "INSERT INTO `client` (`Id_Client`, `Nom`, `Prenom`, `Genre`, `Email`, `Age`, `Situation`, `Couple_avec`, `Moyen_connu`) 
-        VALUES (NULL, '$nom', '$prenom', '$genre', '$email', '$age', '$couple', '$id_couple_avec', '$moyen_connu')";
+    $sql = "INSERT INTO `client` (`Id_Client`, `Nom`, `Prenom`, `Genre`, `Email`, `Mdp`, `Age`, `Situation`, `Couple_avec`, `Moyen_connu`) 
+        VALUES (NULL, '$nom', '$prenom', '$genre', '$email', '0', '$age', '$couple', '$id_couple_avec', '$moyen_connu')";
     mysqli_query($conn, $sql);
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Connexion patient</title>
+    <title>Connexion psychologue</title>
     <link rel="stylesheet" type="text/css" href="../style/login1.css">
 </head>
 <body>
@@ -11,10 +11,9 @@
     <IMG src="../avatar.png" class="avatar">
 
     <h1>Connexion</h1>
-    <form method="post">
+    <form method="post" action="../php/login_psy.php">
         <label>
-            <input type="text" name="nom" placeholder="Votre nom">
-            <input type="text" name="prenom" placeholder="Votre prénom">
+            <input type="email" name="email" placeholder="Votre email">
             <input type="password" name="password" placeholder="Votre mot de passe">
         </label>
 
@@ -24,31 +23,5 @@
 </div>
 </body>
 
-<?php
-$conn=mysqli_connect("localhost", "root", "", "psychologue");
-
-//Check connection
-if (mysqli_connect_errno())
-{
-    echo "Failed to connect to MySQL: ". mysqli_connect_error();
-}
-
-if (isset($_POST['login_btn']))
-{
-    session_start();
-    $nom = ($_POST['nom']);
-    $prenom = ($_POST['prenom']);
-    $Password = ($_POST['password']);
-
-
-    $sql = "SELECT * FROM psy WHERE Nom ='$nom' AND Mdp = '$Password' AND Prenom = '$prenom'";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result)==1)
-    {
-        header("location: ajout_client_form.php"); //redirect
-    }
-}
-?>
 
 </html>

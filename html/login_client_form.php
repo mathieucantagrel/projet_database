@@ -11,7 +11,7 @@
         <IMG src="../avatar.png" class="avatar">
 
         <h1>Connexion</h1>
-        <form method="post">
+        <form method="post" action="../php/login_client.php">
             <p>Email</p>
             <label>
                 <input type="email" name="email" placeholder="Votre email">
@@ -28,33 +28,5 @@
         </form>
     </div>
 </body>
-
-
-<?php
-$conn=mysqli_connect("localhost", "root", "", "psychologue");
-
-//Check connection
-if (mysqli_connect_errno())
-{
-    echo "Failed to connect to MySQL: ". mysqli_connect_error();
-}
-
-if (isset($_POST['login_btn']))
-{
-    session_start();
-    $email = ($_POST['email']);
-    $Password = ($_POST['password']);
-
-
-    $sql = "SELECT Email, Mdp FROM client WHERE Email='$email' AND Mdp = '$Password'";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result)==1)
-    {
-        header("location: ajout_client_form.php"); //redirect
-    }
-}
-?>
-
 </html>
 
