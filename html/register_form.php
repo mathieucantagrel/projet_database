@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <title>Create Account</title>
-    <link rel="stylesheet" type="text/css" href="register.css">
+    <link rel="stylesheet" type="text/css" href="../style/register.css">
 </head>
 <body>
 <div class="loginbox">
 
-    <IMG src="avatar.png" class="avatar">
+    <IMG src="../avatar.png" class="avatar">
 
     <h1>Create an Account</h1>
-    <form method="post" action="register.php">
+    <form method="post" action="../php/register.php">
         <label>
             <input type="email" name="email" placeholder="Votre adresse mail">
             <input type="password" name="password" placeholder="Votre mot de passe">

@@ -1,6 +1,6 @@
 <?php
 
-$conn=mysqli_connect("localhost", "root", "", "projet_bdd");
+$conn=mysqli_connect("localhost", "root", "", "psychologue");
 
 //Check connection
 if (mysqli_connect_errno())

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <title>Connexion patient</title>
-    <link rel="stylesheet" type="text/css" href="login1.css">
+    <link rel="stylesheet" type="text/css" href="../style/login1.css">
 </head>
 <body>
 
     <div class="loginbox">
 
-        <IMG src="avatar.png" class="avatar">
+        <IMG src="../avatar.png" class="avatar">
 
         <h1>Connexion</h1>
         <form method="post">
