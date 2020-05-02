@@ -1,5 +1,6 @@
 <?php
 session_start();
+$dernier_lundi = date("Y-m-d", strtotime("previous monday"));
 echo 'Bonjour docteur';
 ?>
 
@@ -17,6 +18,7 @@ echo 'Bonjour docteur';
 
 <a href="ajout_client_form.php"><input type="submit" name="" value="Ajouter un nouveau patient"></a>
 <a href="rdv_form.php"><input type="submit" name="" value="Ajouter un rdv"></a>
+<a href="<?php echo "calendrier.php?date=".$dernier_lundi?>"><input type="submit" name="" value="voir rdv"></a>
 
 
 
