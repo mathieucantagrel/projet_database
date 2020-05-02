@@ -27,8 +27,29 @@ function affichage($dernier_lundi){
             echo "<td>";
             $date = date('Y-m-d', strtotime($dernier_lundi. ' + '.$i.' days'));
             while ($rows = mysqli_fetch_array($result)){
-                if (($rows['Date']==$date)&&("$h"==$rows['Heure'])){
-                    echo "coucou";
+                if (($rows['Date']==$date)&&("$h"==$rows['Heure'])) {
+                    if ($rows['Id_client1'] != NULL){
+                        $Id_Client1 = $rows['Id_client1'];
+                        $sql = "SELECT Prenom,Nom FROM client WHERE `Id_client`= $Id_Client1 LIMIT 1";
+                        $rdv = mysqli_query($conn, $sql);
+                        $donnees = $rdv->fetch_array();
+                        echo $donnees[0] . " " . $donnees[1]."<br>";
+                    }
+                    if ($rows['Id_client2'] != NULL){
+                        $Id_Client2 = $rows['Id_client2'];
+                        $sql = "SELECT Prenom,Nom FROM client WHERE `Id_client`= $Id_Client2 LIMIT 1";
+                        $rdv = mysqli_query($conn, $sql);
+                        $donnees = $rdv->fetch_array();
+                        echo $donnees[0] . " " . $donnees[1]."<br>";
+                    }
+                    if ($rows['Id_client3'] != NULL){
+                        $Id_Client3 = $rows['Id_client3'];
+                        $sql = "SELECT Prenom,Nom FROM client WHERE `Id_client`= $Id_Client3 LIMIT 1";
+                        $rdv = mysqli_query($conn, $sql);
+                        $donnees = $rdv->fetch_array();
+                        echo $donnees[0] . " " . $donnees[1]."<br>";
+                    }
+                    echo "<a href='../html/Edition_rdv.php?id=".$rows['Id_seance']."'>Editer</a>";
                 }
             }
             echo "</td>";

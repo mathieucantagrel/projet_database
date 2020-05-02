@@ -1,7 +1,7 @@
 <?php
 include '../php/conn.php';
 session_start();
-$id_client = $_SESSION['id_client'];
+$id_client = isset($_SESSION['id_client']) ? $_SESSION['id_client'] : NULL;
 $sql = "SELECT Nom, Prenom FROM `client` WHERE `Id_client` = '$id_client'";
 $result = mysqli_query($conn, $sql);
 $nom = NULL;
@@ -32,13 +32,13 @@ $datetime = date("Y-m-d");
                     <label for="">nom du premier patient :</label>
                 </td>
                 <td>
-                    <input type="text" name="nom_premier" required value="<?php echo $nom;?>" disabled>
+                    <input type="text" name="nom_premier" required value="<?php echo $nom;?>" <?php if($id_client!=NULL){echo "disabled";}?>>
                 </td>
                 <td>
                     <label for="">prenom du premier patient :</label>
                 </td>
                 <td>
-                    <input type="text" name="prenom_premier" required value="<?php echo $prenom;?>" disabled>
+                    <input type="text" name="prenom_premier" required value="<?php echo $prenom;?>" <?php if($id_client!=NULL){echo "disabled";}?>>
                 </td>
             </tr>
             <tr>
