@@ -13,16 +13,18 @@ if (isset($_POST['login_btn'])) {
     $Password = ($_POST['password']);
 
 
-    $sql = "SELECT Prenom,Email, Mdp FROM client WHERE Email='$email' AND Mdp = '$Password'";
+    $sql = "SELECT Prenom,Email,Mdp,Id_client FROM client WHERE Email='$email' AND Mdp = '$Password'";
     $result = mysqli_query($conn, $sql);
 
     while ($donnees = $result->fetch_array())
     {
         $stock = $donnees[0];
+        $id_client = $donnees[3];
     }
     if (mysqli_num_rows($result) == 1 && $Password != '0') {
 
         $_SESSION['prenom'] = $stock;
+        $_SESSION['id_client'] = $id_client;
         header("location: ../html/accueil_client_form.php");
     }
 }

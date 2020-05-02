@@ -1,4 +1,16 @@
 <?php
+include '../php/conn.php';
+session_start();
+$id_client = $_SESSION['id_client'];
+$sql = "SELECT Nom, Prenom FROM `client` WHERE `Id_client` = '$id_client'";
+$result = mysqli_query($conn, $sql);
+$nom = NULL;
+$prenom = NULL;
+while ($donnees = $result->fetch_array())
+    {
+       $nom = $donnees[0];
+       $prenom = $donnees[1];
+    }
 $datetime = date("Y-m-d");
 ?>
 
@@ -20,13 +32,13 @@ $datetime = date("Y-m-d");
                     <label for="">nom du premier patient :</label>
                 </td>
                 <td>
-                    <input type="text" name="nom_premier" required>
+                    <input type="text" name="nom_premier" required value="<?php echo $nom;?>" disabled>
                 </td>
                 <td>
                     <label for="">prenom du premier patient :</label>
                 </td>
                 <td>
-                    <input type="text" name="prenom_premier" required>
+                    <input type="text" name="prenom_premier" required value="<?php echo $prenom;?>" disabled>
                 </td>
             </tr>
             <tr>

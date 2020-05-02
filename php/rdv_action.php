@@ -77,47 +77,45 @@ if ($date!=NULL){
     echo "<br>".$date;
 }
 
-$sql = "INSERT INTO `seance` (`Date`, `Heure`, `Prix`, `Moyen_paiement`, `Remarques`, `Nombre_client`, `Note_anxiete`)
-        VALUES 
-        ('$date', '$heure_rdv', NULL, NULL, NULL, $nbr_client, NULL)";
+$sql = "SELECT `Id_seance` FROM `seance`
+        WHERE `Date` LIKE '$date' AND 
+        `Heure` LIKE '$heure_rdv'";
 
-echo $sql;
-
-if (!mysqli_query($conn, $sql)) {
-    die("Error : " . mysqli_error($conn));
-}
-
-$sql = "SELECT MAX(`Id_seance`) FROM `seance`";
 $result = mysqli_query($conn, $sql);
-$maxId=NULL;
-while ($row = mysqli_fetch_array($result)){
-    $maxId = $row[0];
+$row=mysqli_fetch_array($result);
+if ($row['Id_seance']!=NULL){
+    echo "<br>ici<br>";
+    echo $row['Id_seance'];
+    die("<script>alert(\"horraire deja pris\")</script><script>window.history.back()</script>");
 }
 
-$sql = "INSERT INTO `client_seance` (`Id_client`, `Id_seance`)
+$sql = "INSERT INTO `seance` (`Date`, `Heure`, `Prix`, `Moyen_paiement`, `Remarques`, `Nombre_client`, `Note_anxiete`, `Id_client1`, `Id_client2`, `Id_client3`)
         VALUES 
-        ('$id_premier', '$maxId')";
+        ('$date', '$heure_rdv', NULL, NULL, NULL, '$nbr_client', NULL, '$id_premier', NULL, NULL)";
 
 if (!mysqli_query($conn, $sql)) {
     die("<br>Error : " . mysqli_error($conn));
-}
+}else {
 
-if ($nbr_client==2){
-    $sql = "INSERT INTO `client_seance` (`Id_client`, `Id_seance`)
-        VALUES 
-        ('$id_deuxieme', '$maxId')";
-
-    if (!mysqli_query($conn, $sql)) {
-        die("<br>Error : " . mysqli_error($conn));
-    }
-}
-
-if ($nbr_client==3){
-    $sql = "INSERT INTO `client_seance` (`Id_client`, `Id_seance`)
-        VALUES 
-        ('$id_troisieme', '$maxId')";
-
-    if (!mysqli_query($conn, $sql)) {
-        die("<br>Error : " . mysqli_error($conn));
+    if ($id_deuxieme!=NULL) {
+        $sql = "UPDATE `seance`
+            SET `Id_client2` = '$id_deuxieme'
+            order by Id_seance desc
+            limit 1";
+        if (!mysqli_query($conn, $sql)) {
+            die("<br>Error : " . mysqli_error($conn));
+        }else {
+            if ($id_troisieme!=NULL) {
+                $sql = "UPDATE `seance`
+            SET `Id_client3` = '$id_troisieme'
+            order by Id_seance desc
+            limit 1";
+                if (!mysqli_query($conn, $sql)) {
+                    die("<br>Error : " . mysqli_error($conn));
+                }else {
+                    echo "<br>ajout effectué";
+                }
+            }
+        }
     }
 }

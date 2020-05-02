@@ -1,7 +1,8 @@
 
 <?php
     session_start();
-    echo 'Bonjour ' . $_SESSION['prenom'];?>
+    echo 'Bonjour ' . $_SESSION['prenom'];
+    echo "<br>". $_SESSION['id_client']; ?>
 
 <!doctype html>
 <html lang="en">
@@ -15,7 +16,7 @@
 
 <h1> Accueil client</h1>
 
-<a href=""><input type="submit" name="" value="Une autre page"></a>
+<a href="rdv_form.php"><input type="submit" name="" value="Une autre page"></a>
 
 
 
