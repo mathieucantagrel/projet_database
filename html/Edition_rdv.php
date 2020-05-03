@@ -129,7 +129,12 @@ if ($id_client2!=NULL){
             </tr>
             <tr>
                 <td>
-                    <input type="submit">
+                    <input type="submit" name="changement" value="modifier">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" name="supprimer" value="supprimer">
                 </td>
             </tr>
         </table>
