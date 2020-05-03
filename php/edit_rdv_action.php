@@ -38,7 +38,7 @@ if ($nom2!=NULL&&$prenom2!=NULL){
     $row = mysqli_fetch_array($result);
     $id_client2 = $row['Id_client'];
     if ($id_client2 == NULL) {
-        die("<script>window.history.back()</script>");
+        die("<script>alert(\"le client $nom2 $prenom2 n'existe pas\")</script><script>window.history.back()</script>");
     }
     $nbr_client +=1;
     echo $id_client2;
@@ -50,7 +50,7 @@ if ($nom3!=NULL&&$prenom3!=NULL) {
     $row = mysqli_fetch_array($result);
     $id_client3 = $row['Id_client'];
     if ($id_client3 == NULL) {
-        die("<script>window.history.back()</script>");
+        die("<script>alert(\"le client $nom3 $prenom3 n'existe pas\")</script><script>window.history.back()</script>");
     }
     $nbr_client +=1;
     echo $id_client3;
@@ -62,7 +62,7 @@ $sql = "SELECT Id_seance FROM `seance` WHERE DATE='$date' AND Heure='$heure_rdv'
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 if ($row['Id_seance']!=$id_seance&&$row['Id_seance']!=NULL){
-    die("<script>window.history.back()</script>");
+    die("<script>alert(\"le crénau horaire est deja pris\")</script><script>window.history.back()</script>");
 }
 
 if ($id_client2==NULL&&$id_client3==NULL){
