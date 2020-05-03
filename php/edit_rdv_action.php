@@ -4,6 +4,10 @@ include 'conn.php';
 
 $id_seance = $_GET['id'];
 
+if (isset($_POST['retour'])){
+    die("<script>window.history.go(-2)</script>");
+}
+
 if (isset($_POST['changement'])){
 
     $date = isset($_POST['date']) ? $_POST['date'] : NULL;

@@ -36,6 +36,7 @@ if ($id_client2!=NULL){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../style/rdv_form_style.css">
     <title>Document</title>
 </head>
 <body>
@@ -81,7 +82,7 @@ if ($id_client2!=NULL){
                 <td>
                     Remarques :
                 </td>
-                <td>
+                <td colspan="3">
                     <textarea name="remarques"><?php echo $rows['Remarques']?></textarea>
 
                 </td>
@@ -135,6 +136,11 @@ if ($id_client2!=NULL){
             <tr>
                 <td>
                     <input type="submit" name="supprimer" value="supprimer">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" name="retour" value="retour">
                 </td>
             </tr>
         </table>

@@ -9,6 +9,8 @@ body{
 }
 
 table{
+    margin-top: 100px;
+    margin-bottom: 100px;
     background: rgba(64, 64, 64, 0.5);
     color: white;
     border-radius: 10px;
