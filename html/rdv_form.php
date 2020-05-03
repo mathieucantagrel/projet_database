@@ -32,13 +32,13 @@ $datetime = date("Y-m-d");
                     <label for="">nom du premier patient :</label>
                 </td>
                 <td>
-                    <input type="text" name="nom_premier" required value="<?php echo $nom;?>" <?php if($id_client!=NULL){echo "disabled";}?>>
+                    <input type="text" name="nom_premier" required value="<?php echo $nom;?>">
                 </td>
                 <td>
                     <label for="">prenom du premier patient :</label>
                 </td>
                 <td>
-                    <input type="text" name="prenom_premier" required value="<?php echo $prenom;?>" <?php if($id_client!=NULL){echo "disabled";}?>>
+                    <input type="text" name="prenom_premier" required value="<?php echo $prenom;?>">
                 </td>
             </tr>
             <tr>

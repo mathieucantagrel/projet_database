@@ -2,6 +2,10 @@
 
 include "conn.php";
 
+if (!isset($_POST['nom_premier'])){
+    echo "ici";
+}
+
 $nom_premier = isset($_POST['nom_premier']) ? $_POST['nom_premier'] : NULL;
 $prenom_premier = isset($_POST['prenom_premier']) ? $_POST['prenom_premier'] : NULL;
 
@@ -73,6 +77,7 @@ $heure_rdv = date('H:i:s', strtotime("$heure:$minute:00"));
 
 echo "<br>".$heure_rdv;
 
+
 if ($date!=NULL){
     echo "<br>".$date;
 }
@@ -92,6 +97,8 @@ if ($row['Id_seance']!=NULL){
 $sql = "INSERT INTO `seance` (`Date`, `Heure`, `Prix`, `Moyen_paiement`, `Remarques`, `Nombre_client`, `Note_anxiete`, `Id_client1`, `Id_client2`, `Id_client3`)
         VALUES 
         ('$date', '$heure_rdv', NULL, NULL, NULL, '$nbr_client', NULL, '$id_premier', NULL, NULL)";
+
+echo "<br>".$id_premier;
 
 if (!mysqli_query($conn, $sql)) {
     die("<br>Error : " . mysqli_error($conn));

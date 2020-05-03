@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+}
+
+table{
+    background-color: #eeeeee;
+    border-collapse: collapse;
+}
+tr{
+    width: 50px;
+    height: 50px;
+
+}
+td{
+    width: 200px;
+    border: 1px solid #cccccc;
+}
+td:hover{
+    background-color: #cccccc;
+}
+
+.jour{
+    background-color: #cccccc;
+}
+
+.selections{
+    display: flex;
+    width: 100%;
+    font-size: 20px;
+
+}
+
+.selections a, .selections span{
+    flex:auto;
+    text-align: center;
+    background-color: rgb(26,188,156);
+    padding: 24px;
+    color: white;
+}
+
+input{
+    border: none;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(255,255,255,0);
+}
+
+table a {
+    text-decoration : none;
+    color: rgb(0, 1, 248);
+}

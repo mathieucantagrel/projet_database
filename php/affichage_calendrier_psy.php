@@ -9,13 +9,13 @@ function affichage($dernier_lundi){
 
     echo "<tr>
                 <td class='jour'></td>
-                <td class='jour'>Lundi ".$dernier_lundi."</td>
-                <td class='jour'>mardi ".date('Y-m-d', strtotime($dernier_lundi. ' + 1 days'))."</td>
-                <td class='jour'>Mercredi ".date('Y-m-d', strtotime($dernier_lundi. ' + 2 days'))."</td>
-                <td class='jour'>Jeudi ".date('Y-m-d', strtotime($dernier_lundi. ' + 3 days'))."</td>
-                <td class='jour'>Vendredi ".date('Y-m-d', strtotime($dernier_lundi. ' + 4 days'))."</td>
-                <td class='jour'>Samedi ".date('Y-m-d', strtotime($dernier_lundi. ' + 5 days'))."</td>
-                <td class='jour'>Dimanche ".date('Y-m-d', strtotime($dernier_lundi. ' + 6 days'))."</td>
+                <td class='jour'>Lundi ".date('d', strtotime($dernier_lundi))."</td>
+                <td class='jour'>mardi ".date('d', strtotime($dernier_lundi. ' + 1 days'))."</td>
+                <td class='jour'>Mercredi ".date('d', strtotime($dernier_lundi. ' + 2 days'))."</td>
+                <td class='jour'>Jeudi ".date('d', strtotime($dernier_lundi. ' + 3 days'))."</td>
+                <td class='jour'>Vendredi ".date('d', strtotime($dernier_lundi. ' + 4 days'))."</td>
+                <td class='jour'>Samedi ".date('d', strtotime($dernier_lundi. ' + 5 days'))."</td>
+                <td class='jour'>Dimanche ".date('d', strtotime($dernier_lundi. ' + 6 days'))."</td>
         </tr>";
 
     $h = date('H:i:s', strtotime("08:00:00"));

@@ -25,22 +25,33 @@ $precedente_annee = date("Y-m-d", strtotime("previous monday", strtotime($preced
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../style/Calendrier_style.css">
     <title>Document</title>
 </head>
 <body>
+<div class="selections">
+    <a href="<?php echo "calendrier.php?date=".$precedente_annee?>"><input type="submit" value="&lt;"></a>
+    <span>annee: <?php echo date('Y', strtotime($dernier_lundi))?></span>
+    <a href="<?php echo "calendrier.php?date=".$prochaine_annee?>"><input type="submit" value="&gt;"></a>
+</div>
+
+<div class="selections">
+    <a href="<?php echo "calendrier.php?date=".$precedent_mois?>"><input type="submit" value="&lt;"></a>
+    <span>mois: <?php echo date('m', strtotime($dernier_lundi))?></span>
+    <a href="<?php echo "calendrier.php?date=".$prochain_mois?>"><input type="submit" value="&gt;"></a>
+</div>
+
+<div class="selections">
+    <a href="<?php echo "calendrier.php?date=".$precedent_lundi?>"><input type="submit" value="&lt;"></a>
+    <span>semaine:</span>
+    <a href="<?php echo "calendrier.php?date=".$prochain_lundi?>"><input type="submit" value="&gt;"></a>
+</div>
+
 <table>
     <?php
         affichage($dernier_lundi);
     ?>
 </table>
-<p>semaine:</p>
-<a href="<?php echo "calendrier.php?date=".$precedent_lundi?>"><input type="submit" value="<-"></a>
-<a href="<?php echo "calendrier.php?date=".$prochain_lundi?>"><input type="submit" value="->"></a>
-<p>mois:</p>
-<a href="<?php echo "calendrier.php?date=".$precedent_mois?>"><input type="submit" value="<-"></a>
-<a href="<?php echo "calendrier.php?date=".$prochain_mois?>"><input type="submit" value="->"></a>
-<p>annee:</p>
-<a href="<?php echo "calendrier.php?date=".$precedent_lundi?>"><input type="submit" value="<-"></a>
-<a href="<?php echo "calendrier.php?date=".$prochain_lundi?>"><input type="submit" value="->"></a>
+
 </body>
 </html>
