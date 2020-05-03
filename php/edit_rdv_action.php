@@ -118,7 +118,7 @@ if (isset($_POST['changement'])){
 
 if (isset($_POST['supprimer'])){
     $sql = "DELETE FROM `seance` WHERE `Id_seance`='$id_seance'";
-    
+
     if (!mysqli_query($conn, $sql)){
         echo mysqli_error($conn);
     }

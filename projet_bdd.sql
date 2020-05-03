@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 02 mai 2020 à 18:49
+-- Généré le :  Dim 03 mai 2020 à 12:25
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -118,8 +118,7 @@ CREATE TABLE `seance` (
 --
 
 INSERT INTO `seance` (`Id_seance`, `Date`, `Heure`, `Prix`, `Moyen_paiement`, `Remarques`, `Nombre_client`, `Note_anxiete`, `Id_client1`, `Id_client2`, `Id_client3`) VALUES
-(46, '2020-05-11', '11:30:00', NULL, NULL, NULL, 3, NULL, 4, 6, 7),
-(47, '2020-05-11', '11:00:00', NULL, NULL, NULL, 3, NULL, 4, 6, 7);
+(47, '2020-05-11', '11:00:00', 32, 'liquide', 'test, ceci est un test', 1, 0, 4, NULL, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -204,8 +203,8 @@ ALTER TABLE `profession_client`
 --
 ALTER TABLE `seance`
   ADD CONSTRAINT `Seance_client1` FOREIGN KEY (`Id_client1`) REFERENCES `client` (`Id_Client`),
-  ADD CONSTRAINT `Seance_client2` FOREIGN KEY (`Id_client2`) REFERENCES `client` (`Id_Client`),
-  ADD CONSTRAINT `Seance_client3` FOREIGN KEY (`Id_client3`) REFERENCES `client` (`Id_Client`);
+  ADD CONSTRAINT `Seance_client2` FOREIGN KEY (`Id_client2`) REFERENCES `client` (`Id_Client`) ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Seance_client3` FOREIGN KEY (`Id_client3`) REFERENCES `client` (`Id_Client`) ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
