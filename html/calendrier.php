@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+
+if ($_SESSION['Login']=='psy'){
+    $id='all';
+}elseif ($_SESSION['Login']=='client'){
+    $id=$_SESSION['id_client'];
+}
+
 include '../php/affichage_calendrier_psy.php';
 $dernier_lundi = $_GET['date'];
 
@@ -30,6 +39,14 @@ $precedente_annee = date("Y-m-d", strtotime("previous monday", strtotime($preced
 </head>
 <body>
 <div class="selections">
+    <?php if ($_SESSION['Login']=='psy'){
+        echo "<a href=\"accueil_psy_form.php\"><input type=\"submit\" value=\"retour\" id=\"retour\"></a>";
+    }else{
+        echo "<a href=\"accueil_client_form.php\"><input type=\"submit\" value=\"retour\" id=\"retour\"></a>";
+    }?>
+
+</div>
+<div class="selections">
     <a href="<?php echo "calendrier.php?date=".$precedente_annee?>"><input type="submit" value="&lt;"></a>
     <span>annee: <?php echo date('Y', strtotime($dernier_lundi))?></span>
     <a href="<?php echo "calendrier.php?date=".$prochaine_annee?>"><input type="submit" value="&gt;"></a>
@@ -49,7 +66,7 @@ $precedente_annee = date("Y-m-d", strtotime("previous monday", strtotime($preced
 
 <table>
     <?php
-        affichage($dernier_lundi);
+        affichage($dernier_lundi, $id);
     ?>
 </table>
 

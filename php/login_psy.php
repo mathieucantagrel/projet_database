@@ -19,6 +19,7 @@ if (isset($_POST['login_btn']))
 
     if (mysqli_num_rows($result)==1)
     {
+        $_SESSION['Login'] = 'psy';
         header("location: ../html/accueil_psy_form.php"); //redirect
     }
 }

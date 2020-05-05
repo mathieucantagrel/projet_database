@@ -1,10 +1,15 @@
 <?php
 
-function affichage($dernier_lundi){
+function affichage($dernier_lundi, $id){
 
     include '../php/conn.php';
 
     $sql = "SELECT * FROM `seance`";
+
+    if ($id!='all'){
+        $sql=$sql." WHERE `Id_client1`=$id";
+    }
+
     $result = mysqli_query($conn, $sql);
 
     echo "<tr>

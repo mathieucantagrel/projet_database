@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+
+#main_content{
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    display: flex;
+}
+
+#main_content table{
+    margin-top: 50px;
+    height: 200px;
+    padding: 50px;
+    background-color: rgba(60,63,65,0.4);
+    border-radius: 20px;
+}
+
+td {
+    text-align: center;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+input{
+    background-color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+input:hover{
+    background-color: #cccccc;
+}

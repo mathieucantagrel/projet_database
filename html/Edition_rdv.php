@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../php/conn.php';
 $id_seance = $_GET['id'];
 $sql = "SELECT * FROM `seance` WHERE `Id_seance`= $id_seance LIMIT 1";
@@ -62,12 +63,13 @@ if ($id_client2!=NULL){
                     </select>
                 </td>
             </tr>
-            <tr>
+            <?php if ($_SESSION['Login']=='psy'){
+                echo "<tr>
                 <td>
                     Prix :
                 </td>
                 <td>
-                    <input type="number" value="<?php echo $rows['Prix']?>" name="prix">
+                    <input type=\"number\" value=\"".$rows['Prix']."\" name=\"prix\">
                 </td>
             </tr>
             <tr>
@@ -75,15 +77,15 @@ if ($id_client2!=NULL){
                     Moyen de paiement :
                 </td>
                 <td>
-                    <input type="text" value="<?php echo $rows['Moyen_paiement']?>" name="moyen_paiement">
+                    <input type=\"text\" value=\"".$rows['Moyen_paiement']."\" name=\"moyen_paiement\">
                 </td>
             </tr>
             <tr>
                 <td>
                     Remarques :
                 </td>
-                <td colspan="3">
-                    <textarea name="remarques"><?php echo $rows['Remarques']?></textarea>
+                <td colspan=\"3\">
+                    <textarea name=\"remarques\">".$rows['Remarques']."</textarea>
 
                 </td>
             </tr>
@@ -92,7 +94,7 @@ if ($id_client2!=NULL){
                     Note d'anxiete:
                 </td>
                 <td>
-                    <input type="number" min="0" max="10" value="<?php echo $rows['Note_anxiete']?>" name="note_anxiete">
+                    <input type=\"number\" min=\"0\" max=\"10\" value=\"".$rows['Note_anxiete']."\" name=\"note_anxiete\">
                 </td>
             </tr>
             <tr>
@@ -100,10 +102,10 @@ if ($id_client2!=NULL){
                     client 1:
                 </td>
                 <td>
-                    <input type="text" value="<?php echo $donnees_client1['Nom']?>" name="nom1" required>
+                    <input type=\"text\" value=\"".$donnees_client1['Nom']."\" name=\"nom1\" required>
                 </td>
                 <td>
-                    <input type="text" value="<?php echo $donnees_client1['Prenom']?>" name="prenom1" required>
+                    <input type=\"text\" value=\"".$donnees_client1['Prenom']."\" name=\"prenom1\" required>
                 </td>
             </tr>
             <tr>
@@ -111,10 +113,10 @@ if ($id_client2!=NULL){
                     client 2:
                 </td>
                 <td>
-                    <input type="text" value="<?php if ($id_client2!=NULL){echo $donnees_client2['Nom'];}?>" name="nom2">
+                    <input type=\"text\" value=\"";if ($id_client2!=NULL){echo $donnees_client2['Nom'];} echo "\" name=\"nom2\">
                 </td>
                 <td>
-                    <input type="text" value="<?php if ($id_client2!=NULL){echo $donnees_client2['Prenom'];}?>" name="prenom2">
+                    <input type=\"text\" value=\"";if ($id_client2!=NULL){echo $donnees_client2['Prenom'];} echo "\" name=\"prenom2\">
                 </td>
             </tr>
             <tr>
@@ -122,12 +124,14 @@ if ($id_client2!=NULL){
                     client 3:
                 </td>
                 <td>
-                    <input type="text" value="<?php if ($id_client3!=NULL){echo $donnees_client3['Nom'];}?>" name="nom3">
+                    <input type=\"text\" value=\""; if ($id_client3!=NULL){echo $donnees_client3['Nom'];} echo "\" name=\"nom3\">
                 </td>
                 <td>
-                    <input type="text" value="<?php if ($id_client3!=NULL){echo $donnees_client3['Prenom'];}?>" name="prenom3">
+                    <input type=\"text\" value=\""; if ($id_client3!=NULL){echo $donnees_client3['Prenom'];} echo "\" name=\"prenom3\">
                 </td>
-            </tr>
+            </tr>";
+
+            } ?>
             <tr>
                 <td>
                     <input type="submit" name="changement" value="modifier">
@@ -143,6 +147,7 @@ if ($id_client2!=NULL){
                     <input type="submit" name="retour" value="retour">
                 </td>
             </tr>
+
         </table>
     </form>
 </body>

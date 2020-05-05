@@ -25,6 +25,7 @@ if (isset($_POST['login_btn'])) {
 
         $_SESSION['prenom'] = $stock;
         $_SESSION['id_client'] = $id_client;
+        $_SESSION['Login'] = 'client';
         header("location: ../html/accueil_client_form.php");
     }
 }

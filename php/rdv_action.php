@@ -126,3 +126,6 @@ if (!mysqli_query($conn, $sql)) {
         }
     }
 }
+$dernier_lundi = date("Y-m-d", strtotime("previous monday"));
+
+die("<script>window.location.href='../html/calendrier.php?date=$dernier_lundi'</script>");
