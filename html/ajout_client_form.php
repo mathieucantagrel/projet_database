@@ -105,6 +105,14 @@
         </tr>
         <tr>
             <td>
+                <label for="">Profession :</label>
+            </td>
+            <td>
+                <input type="text" name="profession" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
             </td>
             <td>
                 <input type="submit">

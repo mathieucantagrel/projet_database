@@ -28,6 +28,6 @@ if (isset($_POST['login_btn'])) {
         $_SESSION['Login'] = 'client';
         header("location: ../html/accueil_client_form.php");
     }else{
-        die("<script></script><script></script>");
+        die("<script>alert(\"mauvais identifiant ou mot de passe\")</script><script>window.history.back()</script>");
     }
 }

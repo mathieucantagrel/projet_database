@@ -29,7 +29,7 @@ input, select {
     margin: 6px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     box-sizing: border-box;
 }
 

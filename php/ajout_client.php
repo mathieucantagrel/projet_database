@@ -9,6 +9,7 @@ $email = isset($_POST["email"]) ? $_POST["email"] : NUll;
 $moyen_connu = isset($_POST["moyen_connu"]) ? $_POST["moyen_connu"] : NULL;
 $genre = isset($_POST["genre"]) ? $_POST["genre"] : NULL;
 $couple = isset($_POST["couple"]) ? $_POST["couple"] : NULL;
+$profession = isset($_POST['profession']) ? $_POST['profession'] : NULL;
 $couple_avec_nom = NULL;
 $couple_avec_prenom = NULL;
 $id_couple_avec = NULL;
@@ -66,6 +67,58 @@ if (($verif === TRUE) && ($verif2 === TRUE))
         $sql="UPDATE client SET Situation = 'oui' WHERE Id_Client = '$id_couple_avec'";
         $sql="UPDATE client SET Couple_avec = '$id_couple_avec1' WHERE Id_Client = '$id_couple_avec'";
         mysqli_query($conn, $sql);
+    }
+
+    $sql = "SELECT `Id_profession` FROM `profession` WHERE `description` lIKE '%$profession%'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result)>0){
+        $row = mysqli_fetch_array($result);
+        $id_profession = $row['Id_profession'];
+        echo "profession:".$id_profession;
+
+        $sql = "SELECT MAX(Id_client) FROM `client`";
+        $result = mysqli_query($conn, $sql);
+        while ($donnees = $result->fetch_array()){
+            $id_nouveau_client = $donnees[0];
+        }
+
+        $date = date('Y-m-d');
+
+        $sql = "INSERT INTO `profession_client` (`Id_profession`, `Id_client`, `Date`)
+                VALUES 
+                ('$id_profession', '$id_nouveau_client', '$date')";
+
+        if(!mysqli_query($conn, $sql)){
+            echo "<br>".mysqli_error($conn);
+        }
+    }else{
+        $sql = "INSERT INTO `profession` (`description`)
+                VALUES 
+                ('$profession')";
+        mysqli_query($conn, $sql);
+
+        $sql = "SELECT MAX(Id_profession) FROM `profession`";
+        $result = mysqli_query($conn, $sql);
+        while ($donnees = $result->fetch_array()){
+            $id_nouvelle_profession = $donnees[0];
+            echo $id_nouvelle_profession;
+        }
+
+        $sql = "SELECT MAX(Id_client) FROM `client`";
+        $result = mysqli_query($conn, $sql);
+        while ($donnees = $result->fetch_array()){
+            $id_nouveau_client = $donnees[0];
+        }
+
+        $date = date('Y-m-d');
+
+        $sql = "INSERT INTO `profession_client` (`Id_profession`, `Id_client`, `Date`)
+                VALUES 
+                ('$id_nouvelle_profession', '$id_nouveau_client', '$date')";
+
+        if(!mysqli_query($conn, $sql)){
+            echo "<br>".mysqli_error($conn);
+        }
     }
 
     header("location:../html/ajout_client_form.php");
