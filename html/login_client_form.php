@@ -14,12 +14,12 @@
         <form method="post" action="../php/login_client.php">
             <p>Email</p>
             <label>
-                <input type="email" name="email" placeholder="Votre email">
+                <input type="email" name="email" placeholder="Votre email" required>
             </label>
 
             <p>Mot de passe</p>
             <label>
-                <input type="password" name="password" placeholder="Votre mot de passe">
+                <input type="password" name="password" placeholder="Votre mot de passe" required>
             </label>
 
             <input class="create" type="submit" name="login_btn" value="Connexion">

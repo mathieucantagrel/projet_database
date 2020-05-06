@@ -95,12 +95,21 @@ if (isset($_POST['changement'])) {
 
         $heure_rdv = date('H:i:s', strtotime("$heure:$minutes:00"));
 
-        $sql = "SELECT Id_seance FROM `seance` WHERE DATE='$date' AND Heure='$heure_rdv'";
+        $sql = "SELECT Id_seance FROM `seance` WHERE Date='$date' AND Heure='$heure_rdv'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
         if ($row['Id_seance'] != $id_seance && $row['Id_seance'] != NULL) {
             die("<script>alert(\"le crénau horaire est deja pris\")</script><script>window.history.back()</script>");
         }
+
+        $sql = "SELECT * FROM `seance` WHERE `Date`='$date'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+        if (mysqli_num_rows($result)>=20){
+            die("<script>alert(\"impossible de modifier le rendez-vous à ce jour\")</script><script>window.history.back()</script>");
+        }
+
+
 
         if ($id_client2 == NULL && $id_client3 == NULL) {
             $sql = "UPDATE `seance`

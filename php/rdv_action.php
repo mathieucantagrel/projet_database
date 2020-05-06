@@ -94,6 +94,13 @@ if ($row['Id_seance']!=NULL){
     die("<script>alert(\"horraire deja pris\")</script><script>window.history.back()</script>");
 }
 
+$sql = "SELECT * FROM `seance` WHERE `Date`='$date'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($result);
+if (mysqli_num_rows($result)>=20){
+    die("<script>alert(\"impossible de prendre rendez-vous\")</script><script>window.history.back()</script>");
+}
+
 $sql = "INSERT INTO `seance` (`Date`, `Heure`, `Prix`, `Moyen_paiement`, `Remarques`, `Nombre_client`, `Note_anxiete`, `Id_client1`, `Id_client2`, `Id_client3`)
         VALUES 
         ('$date', '$heure_rdv', NULL, NULL, NULL, '$nbr_client', NULL, '$id_premier', NULL, NULL)";
