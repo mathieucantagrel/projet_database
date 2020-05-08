@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 03 mai 2020 à 12:25
+-- Généré le :  ven. 08 mai 2020 à 14:48
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -54,7 +54,7 @@ CREATE TABLE `client` (
   `Genre` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Mdp` varchar(255) NOT NULL,
-  `Age` int(11) NOT NULL,
+  `DoB` varchar(255) NOT NULL,
   `Situation` varchar(255) NOT NULL,
   `Couple_avec` int(11) DEFAULT NULL,
   `Moyen_connu` varchar(255) NOT NULL
@@ -64,11 +64,9 @@ CREATE TABLE `client` (
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`Id_Client`, `Nom`, `Prenom`, `Genre`, `Email`, `Mdp`, `Age`, `Situation`, `Couple_avec`, `Moyen_connu`) VALUES
-(4, 'nom', 'prenom', 'femme', '', '', 45, 'non', 0, ''),
-(5, 'test', 'test', 'femme', 'test@test', '', 5, 'non', 0, 'oui'),
-(6, 'Jack', 'Arta', 'homme', 'jackarta@test.test', 'oui', 38, 'non', 0, ''),
-(7, 'Paul', 'Ogne', 'enfant', 'paulogne@test.test', '', 5, 'non', 0, '');
+INSERT INTO `client` (`Id_Client`, `Nom`, `Prenom`, `Genre`, `Email`, `Mdp`, `DoB`, `Situation`, `Couple_avec`, `Moyen_connu`) VALUES
+(21, 'Mathieu', 'Cantagrel', 'homme', 'mathieu@test.test', 'oui', '1999-05-06', 'non', 0, 'projet'),
+(23, 'Arta', 'Jacke', 'femme', 'jackarta@test.test', 'test', '1976-02-10', 'non', 0, 'oui');
 
 -- --------------------------------------------------------
 
@@ -78,8 +76,20 @@ INSERT INTO `client` (`Id_Client`, `Nom`, `Prenom`, `Genre`, `Email`, `Mdp`, `Ag
 
 CREATE TABLE `profession` (
   `Id_profession` int(11) NOT NULL,
-  `descrition` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `profession`
+--
+
+INSERT INTO `profession` (`Id_profession`, `description`) VALUES
+(1, 'ingenieur'),
+(2, 'militaire'),
+(3, 'etudiant'),
+(4, 'oui'),
+(5, 'professeur'),
+(6, 'test');
 
 -- --------------------------------------------------------
 
@@ -92,6 +102,15 @@ CREATE TABLE `profession_client` (
   `Id_client` int(11) NOT NULL,
   `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `profession_client`
+--
+
+INSERT INTO `profession_client` (`Id_profession`, `Id_client`, `Date`) VALUES
+(3, 21, '2020-05-01'),
+(5, 21, '2020-04-22'),
+(6, 23, '2020-05-08');
 
 -- --------------------------------------------------------
 
@@ -112,13 +131,6 @@ CREATE TABLE `seance` (
   `Id_client2` int(11) DEFAULT NULL,
   `Id_client3` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `seance`
---
-
-INSERT INTO `seance` (`Id_seance`, `Date`, `Heure`, `Prix`, `Moyen_paiement`, `Remarques`, `Nombre_client`, `Note_anxiete`, `Id_client1`, `Id_client2`, `Id_client3`) VALUES
-(47, '2020-05-11', '11:00:00', 32, 'liquide', 'test, ceci est un test', 1, 0, 4, NULL, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -173,19 +185,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `Id_Client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id_Client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `profession`
 --
 ALTER TABLE `profession`
-  MODIFY `Id_profession` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_profession` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `seance`
 --
 ALTER TABLE `seance`
-  MODIFY `Id_seance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `Id_seance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- Contraintes pour les tables déchargées
