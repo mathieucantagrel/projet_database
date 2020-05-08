@@ -39,11 +39,11 @@
         </tr>
         <tr>
             <td>
-                <label for="">Age :</label>
+                <label for="">Date de naissance :</label>
             </td>
             <td>
                 <label>
-                    <input type="number" name="age" min="5" max="99">
+                    <input type="date" name="naissance">
                 </label>
             </td>
         </tr>
@@ -115,13 +115,13 @@
             <td>
             </td>
             <td>
-                <input type="submit">
+                <input type="submit" value="ajouter">
+            </td>
+            <td>
+                <a href="accueil_psy_form.php"><input type="button" value="retour"></a>
             </td>
         </tr>
     </table>
-
-
-
 
 
     <script type="text/javascript">

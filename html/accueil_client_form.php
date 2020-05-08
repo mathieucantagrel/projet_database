@@ -2,6 +2,7 @@
 <?php
     session_start();
     $dernier_lundi = date("Y-m-d", strtotime("previous monday"));
+
 ?>
 
 <!doctype html>
@@ -28,6 +29,11 @@
         <tr>
             <td>
                 <a href="<?php echo "calendrier.php?date=".$dernier_lundi?>"><input type="submit" name="" value="voir rdv"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="modification_client.php"><input type="submit" name="" value="Une autre autre page"></a>
             </td>
         </tr>
         <tr>

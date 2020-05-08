@@ -4,7 +4,13 @@ include 'conn.php';
 
 $nom = isset($_POST["nom"]) ? $_POST["nom"] : NULL;
 $prenom = isset($_POST["prenom"]) ? $_POST["prenom"] : NULL;
-$age = isset($_POST["age"]) ? $_POST["age"] : NUll;
+$date_naissance = isset($_POST["naissance"]) ? $_POST["naissance"] : NUll;
+
+$date_naissance_date = new DateTime($date_naissance);
+$now = new DateTime(date("Y-m-d"));
+$dif = $now->diff($date_naissance_date);
+$age = $dif->y;
+
 $email = isset($_POST["email"]) ? $_POST["email"] : NUll;
 $moyen_connu = isset($_POST["moyen_connu"]) ? $_POST["moyen_connu"] : NULL;
 $genre = isset($_POST["genre"]) ? $_POST["genre"] : NULL;
@@ -51,9 +57,11 @@ if ($count === 0)
 
 if (($verif === TRUE) && ($verif2 === TRUE))
 {
-    $sql = "INSERT INTO `client` (`Id_Client`, `Nom`, `Prenom`, `Genre`, `Email`, `Mdp`, `Age`, `Situation`, `Couple_avec`, `Moyen_connu`) 
-        VALUES (NULL, '$nom', '$prenom', '$genre', '$email', '0', '$age', '$couple', '$id_couple_avec', '$moyen_connu')";
-    mysqli_query($conn, $sql);
+    $sql = "INSERT INTO `client` (`Id_Client`, `Nom`, `Prenom`, `Genre`, `Email`, `Mdp`, `DoB`, `Situation`, `Couple_avec`, `Moyen_connu`) 
+        VALUES (NULL, '$nom', '$prenom', '$genre', '$email', '0', '$date_naissance', '$couple', '$id_couple_avec', '$moyen_connu')";
+    if(!mysqli_query($conn, $sql)){
+        echo mysqli_error($conn);
+    }
 
 
     if ($id_couple_avec != NULL)
