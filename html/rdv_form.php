@@ -1,6 +1,8 @@
 <?php
 include '../php/conn.php';
+include '../php/Affichage_select_client.php';
 session_start();
+
 $id_client = isset($_SESSION['id_client']) ? $_SESSION['id_client'] : NULL;
 $sql = "SELECT Nom, Prenom FROM `client` WHERE `Id_client` = '$id_client'";
 $result = mysqli_query($conn, $sql);
@@ -27,48 +29,48 @@ $datetime = date("Y-m-d");
 <body>
     <form method="post" action="../php/rdv_action.php">
         <table>
+
             <tr>
                 <td>
-                    <label for="">nom du premier patient :</label>
+                    <label>Client 1 :</label>
                 </td>
                 <td>
-                    <input type="text" name="nom_premier" required value="<?php echo $nom;?>">
-                </td>
-                <td>
-                    <label for="">prenom du premier patient :</label>
-                </td>
-                <td>
-                    <input type="text" name="prenom_premier" required value="<?php echo $prenom;?>">
+                    <label>
+                        <select name="Id_client1">
+                            <?php affichage_select();?>
+                        </select>
+                    </label>
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <label for="">nom du deuxieme patient (optionel):</label>
+                    <label>Client 2 :</label>
                 </td>
                 <td>
-                    <input type="text" name="nom_deuxieme">
-                </td>
-                <td>
-                    <label for="">prenom du deuxieme patient (optionel):</label>
-                </td>
-                <td>
-                    <input type="text" name="prenom_deuxieme">
+                    <label>
+                        <select name="Id_client2">
+                            <option value="NULL"> </option>
+                            <?php affichage_select();?>
+                        </select>
+                    </label>
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <label for="">nom du troiseme patient (optionel):</label>
+                    <label>Client 3 :</label>
                 </td>
                 <td>
-                    <input type="text" name="nom_troiseme">
-                </td>
-                <td>
-                    <label for="">prenom du troiseme patient (optionel):</label>
-                </td>
-                <td>
-                    <input type="text" name="prenom_troiseme">
+                    <label>
+                        <select name="Id_client3">
+                            <option value="NULL"> </option>
+                            <?php affichage_select();?>
+                        </select>
+                    </label>
                 </td>
             </tr>
+
             <tr>
                 <td>
                     <label for="">date</label>

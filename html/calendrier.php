@@ -40,9 +40,9 @@ $precedente_annee = date("Y-m-d", strtotime("previous monday", strtotime($preced
 <body>
 <div class="selections">
     <?php if ($_SESSION['Login']=='psy'){
-        echo "<a href=\"accueil_psy_form.php\"><input type=\"submit\" value=\"retour\" id=\"retour\"></a>";
+        echo "<a href=\"accueil_psy_form.php\"><input type=\"submit\" value=\"retour\" class=\"retour\"></a>";
     }else{
-        echo "<a href=\"accueil_client_form.php\"><input type=\"submit\" value=\"retour\" id=\"retour\"></a>";
+        echo "<a href=\"accueil_client_form.php\"><input type=\"submit\" value=\"retour\" class=\"retour\"></a>";
     }?>
 
 </div>
@@ -62,6 +62,9 @@ $precedente_annee = date("Y-m-d", strtotime("previous monday", strtotime($preced
     <a href="<?php echo "calendrier.php?date=".$precedent_lundi?>"><input type="submit" value="&lt;"></a>
     <span>semaine:</span>
     <a href="<?php echo "calendrier.php?date=".$prochain_lundi?>"><input type="submit" value="&gt;"></a>
+</div>
+<div class="selections">
+    <a href="<?php echo "../php/pdfgenerator.php?date=".$dernier_lundi ?>"><input type="submit" value="générer en pdf" class="retour"></a>
 </div>
 
 <table>
