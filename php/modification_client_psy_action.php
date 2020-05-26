@@ -1,9 +1,6 @@
 <?php
-
 include 'conn.php';
 session_start();
-
-$id_client = $_SESSION['id_client'];
 
 $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : NULL;
 $nom = isset($_POST['nom']) ? $_POST['nom'] : NULL;
@@ -35,13 +32,19 @@ if (($age >= 18) && (($genre === 'femme') || ($genre === 'homme')))
 }
 
 $verif2 = FALSE;
-$check_duplicate_email = "SELECT Email FROM client WHERE Email ='$email' ";
+$check_duplicate_email = "SELECT Email, Id_client FROM client WHERE Email ='$email' ";
 $result = mysqli_query($conn,$check_duplicate_email);
 $count = mysqli_num_rows($result);
 if ($count <= 1)
 {
     $verif2 = TRUE;
 }
+
+$result = mysqli_query($conn, $check_duplicate_email);
+while ($id = $result->fetch_array()){
+    $id_client = $id["Id_client"];
+}
+
 
 if ($verif==false||$verif2==false){
 
@@ -148,4 +151,4 @@ if ($situation=='oui') {
     }
 }
 
-header("location: ../html/accueil_client_form.php");
+header("location: ../html/fiche_client_form.php");

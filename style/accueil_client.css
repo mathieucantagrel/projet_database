@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+
+#main_content{
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    display: flex;
+}
+
+#main_content table{
+    margin-top: 50px;
+    height: 200px;
+    padding: 50px;
+    background-color: rgba(60,63,65,0.8);
+    border-radius: 20px;
+    color: white;
+}
+
+.buuton {
+    text-align: center;
+    padding: 5%;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+input{
+    background-color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+input:hover{
+    background-color: #cccccc;
+}
+
+body
+{
+    margin: 5%;
+    background-image: url("../fond2.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+
+}

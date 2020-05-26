@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="../style/ajout_client.css">
-    <title>Ajouter un client</title>
+    <title>Ajouter un patient</title>
 </head>
 <body>
 <form action="../php/ajout_client.php" method="post">
@@ -108,17 +108,19 @@
                 <label for="">Profession :</label>
             </td>
             <td>
-                <input type="text" name="profession" required>
+                <label>
+                    <input type="text" name="profession" required>
+                </label>
             </td>
         </tr>
         <tr>
             <td>
             </td>
             <td>
-                <input type="submit" value="ajouter">
+                <input class="buuton" type="submit" value="Ajouter">
             </td>
             <td>
-                <a href="accueil_psy_form.php"><input type="button" value="retour"></a>
+                <a href="accueil_psy_form.php"><input class="buuton" type="button" value="Retour"></a>
             </td>
         </tr>
     </table>

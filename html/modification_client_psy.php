@@ -2,12 +2,14 @@
     session_start();
     include '../php/conn.php';
     include '../php/Affichage_select_client.php';
-    $id_client = $_SESSION['id_client'];
-    $sql = "SELECT * FROM `client` WHERE `Id_client` = $id_client";
+    $client=$_GET["var1"];
+
+    $sql = "SELECT * FROM `client` WHERE `Id_client` = $client";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
-    if ($row['Couple_avec']!=0){
+    if ($row['Couple_avec']!=0)
+    {
         $id_couple = $row['Couple_avec'];
         $sql = "SELECT * FROM `client` WHERE `Id_client` = '$id_couple'";
         $result = mysqli_query($conn, $sql);
@@ -18,7 +20,7 @@
                 INNER JOIN `profession_client`
                 ON profession.Id_profession = profession_client.Id_profession
                 WHERE profession_client.Date=(
-                SELECT MAX(Date) FROM `profession_client` WHERE Id_client='$id_client' 
+                SELECT MAX(Date) FROM `profession_client` WHERE Id_client='$client' 
                 )";
     $result = mysqli_query($conn, $sql);
     while ($profession = $result->fetch_array()){
@@ -34,10 +36,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../style/fiche_client.css">
-    <title>Modifier mon profil</title>
+    <title>Modification fiche patient</title>
 </head>
 <body>
-<form action="../php/modification_client_action.php" method="post">
+<form action="../php/modification_client_psy_action.php" method="post">
     <table>
         <tr>
             <td>
@@ -136,12 +138,12 @@
         </tr>
         <tr>
             <td>
+                <input class="buuton" type="submit" value="Modifier">
             </td>
             <td>
-                <input type="submit" value="Modifier">
             </td>
             <td>
-                <a href="accueil_client_form.php"><input type="button" value="Retour"></a>
+                <a href="fiche_client_form.php"><input class="buuton" type="button" value="Retour"></a>
             </td>
         </tr>
     </table>
@@ -163,7 +165,6 @@
 
 
     </script>
-
     <?php
         if ($row['Couple_avec']==0){
             echo "<script type=\"text/javascript\">pasaffiche('1','2')</script>";

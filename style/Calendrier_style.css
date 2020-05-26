@@ -2,19 +2,64 @@
     box-sizing: border-box;
 }
 
-body{
-    margin: 0;
+body
+{
+    background-image: url("../calendrier.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.selections{
+    display: flex;
+    font-size: 20px;
+    text-align: center;
+    margin: 1%;
+}
+
+.selections a, .selections span
+{
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+
+input{
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: rgba(255,255,255,0);
+}
+
+.retour{
+    font-size: 14px;
+    background-color: #9BA8C6;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.retour:hover{
+    background-color: #8692AE;
+}
+
+
+.buuton{
+    flex-grow: 2;
 }
 
 table{
-    background-color: #eeeeee;
     border-collapse: collapse;
+    text-align: center;
+    display: block;
+    width: auto;
+    background-color: #eeeeee;
 }
 
 td{
     width: 200px;
     border: 1px solid #cccccc;
 }
+
 td:hover{
     background-color: #cccccc;
 }
@@ -23,33 +68,18 @@ td:hover{
     background-color: #cccccc;
 }
 
-.selections{
-    display: flex;
-    width: 100%;
-    font-size: 20px;
-
-}
-
-.selections a, .selections span{
-    flex:auto;
-    text-align: center;
-    background-color: rgb(26,188,156);
-    padding: 10px;
-    color: white;
-}
-
-input{
-    border: none;
-    color: white;
-    font-size: 20px;
-    background-color: rgba(255,255,255,0);
-}
-
 table a {
     text-decoration : none;
     color: rgb(0, 1, 248);
 }
 
-.retour{
-    font-size: 14px;
+.milieu
+{
+    justify-content: center;
+    display: flex;
+}
+
+.couleur
+{
+    color: white;
 }

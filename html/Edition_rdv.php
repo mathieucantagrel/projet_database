@@ -1,6 +1,8 @@
 <?php
 session_start();
 include '../php/conn.php';
+include '../php/Affichage_select_client.php';
+
 $id_seance = $_GET['id'];
 $sql = "SELECT * FROM `seance` WHERE `Id_seance`= $id_seance LIMIT 1";
 $result = mysqli_query($conn, $sql);
@@ -38,7 +40,7 @@ if ($id_client2!=NULL){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../style/rdv_form_style.css">
-    <title>Document</title>
+    <title>Modifier un rendez-vous</title>
 </head>
 <body>
     <form action="../php/edit_rdv_action.php?id=<?php echo $id_seance?>" method="post">
@@ -48,7 +50,9 @@ if ($id_client2!=NULL){
                     Date :
                 </td>
                 <td>
-                    <input type="date" value="<?php echo $rows['Date']?>" min="<?php echo $datetime ?>" name="date" required>
+                    <label>
+                        <input type="date" value="<?php echo $rows['Date']?>" min="<?php echo $datetime ?>" name="date" required>
+                    </label>
                 </td>
             </tr>
             <tr>
@@ -91,7 +95,7 @@ if ($id_client2!=NULL){
             </tr>
             <tr>
                 <td>
-                    Note d'anxiete:
+                    Note d'anxieté :
                 </td>
                 <td>
                     <input type=\"number\" min=\"0\" max=\"10\" value=\"".$rows['Note_anxiete']."\" name=\"note_anxiete\">
@@ -99,7 +103,7 @@ if ($id_client2!=NULL){
             </tr>
             <tr>
                 <td>
-                    client 1:
+                    Patient 1 :
                 </td>
                 <td>
                     <input type=\"text\" value=\"".$donnees_client1['Nom']."\" name=\"nom1\" required>
@@ -110,7 +114,7 @@ if ($id_client2!=NULL){
             </tr>
             <tr>
                 <td>
-                    client 2:
+                    Patient 2 (optionnel) :
                 </td>
                 <td>
                     <input type=\"text\" value=\"";if ($id_client2!=NULL){echo $donnees_client2['Nom'];} echo "\" name=\"nom2\">
@@ -121,7 +125,7 @@ if ($id_client2!=NULL){
             </tr>
             <tr>
                 <td>
-                    client 3:
+                    Patient 3 (optionnel) :
                 </td>
                 <td>
                     <input type=\"text\" value=\""; if ($id_client3!=NULL){echo $donnees_client3['Nom'];} echo "\" name=\"nom3\">
@@ -134,20 +138,15 @@ if ($id_client2!=NULL){
             } ?>
             <tr>
                 <td>
-                    <input type="submit" name="changement" value="modifier">
+                    <input class="buuton" type="submit" name="changement" value="Modifier le rendez-vous">
                 </td>
-            </tr>
-            <tr>
                 <td>
-                    <input type="submit" name="supprimer" value="supprimer">
+                    <input class="buuton" type="submit" name="supprimer" value="Supprimer le rendez-vous">
                 </td>
-            </tr>
-            <tr>
                 <td>
-                    <input type="submit" name="retour" value="retour">
+                    <input class="buuton" type="submit" name="retour" value="Retour">
                 </td>
             </tr>
-
         </table>
     </form>
 </body>

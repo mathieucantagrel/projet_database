@@ -2,7 +2,7 @@
 
 function affichage($dernier_lundi, $id){
 
-    include '../php/conn.php';
+    include 'conn.php';
 
     $sql = "SELECT * FROM `seance`";
 
@@ -15,7 +15,7 @@ function affichage($dernier_lundi, $id){
     echo "<tr>
                 <td class='jour'></td>
                 <td class='jour'>Lundi ".date('d', strtotime($dernier_lundi))."</td>
-                <td class='jour'>mardi ".date('d', strtotime($dernier_lundi. ' + 1 days'))."</td>
+                <td class='jour'>Mardi ".date('d', strtotime($dernier_lundi. ' + 1 days'))."</td>
                 <td class='jour'>Mercredi ".date('d', strtotime($dernier_lundi. ' + 2 days'))."</td>
                 <td class='jour'>Jeudi ".date('d', strtotime($dernier_lundi. ' + 3 days'))."</td>
                 <td class='jour'>Vendredi ".date('d', strtotime($dernier_lundi. ' + 4 days'))."</td>

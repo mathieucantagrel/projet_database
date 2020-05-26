@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'conn.php';
 
 $nom = isset($_POST["nom"]) ? $_POST["nom"] : NULL;

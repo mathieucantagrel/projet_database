@@ -3,24 +3,17 @@
 }
 
 #main_content{
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    display: flex;
-}
-
-#main_content table{
-    margin-top: 50px;
-    height: 200px;
-    padding: 50px;
     background-color: rgba(60,63,65,0.8);
     border-radius: 20px;
     color: white;
+    text-align: center;
+    margin: 15%;
+    padding: 1%;
 }
 
 .buuton {
     text-align: center;
-    padding: 5%;
+    padding: 0.5%;
     vertical-align: middle;
     cursor: pointer;
 }
@@ -28,19 +21,17 @@
 input{
     background-color: white;
     border: none;
-    border-radius: 3px;
-    padding: 10px;
+    border-radius: 5px;
 }
 
 input:hover{
     background-color: #cccccc;
 }
 
-body
+
+html
 {
-    margin: 5%;
-    background-image: url("../fond.jpg");
+    background-image: url("../attente.jpg");
     background-attachment: fixed;
     background-size: cover;
-
 }

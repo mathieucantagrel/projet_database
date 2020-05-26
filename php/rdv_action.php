@@ -1,8 +1,13 @@
 <?php
-
+session_start();
 include "conn.php";
 
-$id_premier = isset($_POST['Id_client1']) ? $_POST['Id_client1'] : NULL;
+$id_premier = isset($_SESSION['id_client']) ? $_SESSION['id_client'] : NULL;
+
+if ($id_premier==NULL){
+    $id_premier = isset($_POST['Id_client1']) ? $_POST['Id_client1'] : NULL;
+
+}
 
 $id_deuxieme = isset($_POST['Id_client2']) ? $_POST['Id_client2'] : NULL;
 if ($id_deuxieme=="NULL"){
@@ -50,14 +55,14 @@ $row=mysqli_fetch_array($result);
 if ($row['Id_seance']!=NULL){
     echo "<br>ici<br>";
     echo $row['Id_seance'];
-    die("<script>alert(\"horraire deja pris\")</script><script>window.history.back()</script>");
+    die("<script>alert(\"Horraire déjà pris\")</script><script>window.history.back()</script>");
 }
 
 $sql = "SELECT * FROM `seance` WHERE `Date`='$date'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 if (mysqli_num_rows($result)>=20){
-    die("<script>alert(\"impossible de prendre rendez-vous\")</script><script>window.history.back()</script>");
+    die("<script>alert(\"Impossible de prendre un rendez-vous\")</script><script>window.history.back()</script>");
 }
 
 $sql = "INSERT INTO `seance` (`Date`, `Heure`, `Prix`, `Moyen_paiement`, `Remarques`, `Nombre_client`, `Note_anxiete`, `Id_client1`, `Id_client2`, `Id_client3`)
@@ -70,7 +75,7 @@ if (!mysqli_query($conn, $sql)) {
     die("<br>Error : " . mysqli_error($conn));
 }else {
 
-    if ($id_deuxieme!=NULL) {
+    if (($id_deuxieme!=NULL) && ($id_deuxieme!=$id_premier)) {
         $sql = "UPDATE `seance`
             SET `Id_client2` = '$id_deuxieme'
             order by Id_seance desc
@@ -78,7 +83,7 @@ if (!mysqli_query($conn, $sql)) {
         if (!mysqli_query($conn, $sql)) {
             die("<br>Error : " . mysqli_error($conn));
         }else {
-            if ($id_troisieme!=NULL) {
+            if (($id_troisieme!=NULL) && ($id_deuxieme!=$id_troisieme) && ($id_premier!=$id_troisieme)) {
                 $sql = "UPDATE `seance`
             SET `Id_client3` = '$id_troisieme'
             order by Id_seance desc

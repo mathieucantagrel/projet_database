@@ -8,7 +8,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="../style/accueil_psy.css">
+    <link rel="stylesheet" type="text/css" href="../style/accueil_client.css">
     <title>Accueil</title>
 </head>
 
@@ -17,27 +17,26 @@
     <table>
         <tr>
             <td>
-                <h1> Accueil client</h1>
-                <h3><?php echo 'Bonjour ' . $_SESSION['prenom'];?></h3>
+                <h1><?php echo 'Bonjour ' . $_SESSION['prenom'].",";?></h1>
             </td>
         </tr>
         <tr>
-            <td>
-                <a href="rdv_form.php"><input type="submit" name="" value="Une autre page"></a>
+            <td class = "buuton">
+                <a href="rdv_client_form.php"><input type="submit" name="" value="Prendre un rendez-vous"></a>
             </td>
         </tr>
         <tr>
-            <td>
-                <a href="<?php echo "calendrier.php?date=".$dernier_lundi?>"><input type="submit" name="" value="voir rdv"></a>
+            <td class = "buuton">
+                <a href="<?php echo "calendrier.php?date=".$dernier_lundi?>"><input type="submit" name="" value="Voir les rendez-vous"></a>
             </td>
         </tr>
         <tr>
-            <td>
-                <a href="modification_client.php"><input type="submit" name="" value="Une autre autre page"></a>
+            <td class = "buuton">
+                <a href="modification_client.php"><input type="submit" name="" value="Modifier mon profil"></a>
             </td>
         </tr>
         <tr>
-            <td>
+            <td class = "buuton">
                 <a href="../php/logout.php"><input type="submit" value="Déconnexion"></a>
             </td>
         </tr>
