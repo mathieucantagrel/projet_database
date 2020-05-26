@@ -27,7 +27,7 @@ $result2 = mysqli_query($conn, $sql2);
     <title>Fiche patient</title>
 </head>
 <body>
-<form action=".." method="post">
+<form action="../html/Historique_client.php" method="post">
     <table>
         <tr>
             <td>
@@ -140,12 +140,17 @@ $result2 = mysqli_query($conn, $sql2);
                 <a href="<?php echo "modification_client_psy.php?var1=".$client?>"><input class="buuton" type="button" value="Modifier la fiche"></a>
             </td>
             <td>
+
+                    <input type="text" name="id_client" value="<?php echo $client?>" style="display: none">
+                    <input class="buuton" type="submit" value="historique des rendez-vous">
+
             </td>
             <td>
                 <a href="fiche_client_form.php"><input class="buuton" type="button" value="Retour"></a>
             </td>
         </tr>
     </table>
+</form>
 </form>
 
 

@@ -15,12 +15,12 @@ table
     border-radius: 10px;
     width: 500px;
     height: 120px;
-    top: 50%;
     left: 50%;
     position: absolute;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0);
     padding: 45px 30px;
     box-sizing: border-box;
+    margin-bottom: 100px;
 }
 
 input, select {
@@ -40,6 +40,10 @@ td {
 {
     background-color: #cccccc;
     cursor: pointer;
+}
+
+#main_content{
+    margin-top: 100px;
 }
 
 

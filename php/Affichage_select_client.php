@@ -33,3 +33,22 @@ function affichage_select(){
         }
     }
 }
+
+function affichage_select_psy($id_client_rdv){
+
+    include 'conn.php';
+
+    $sql = "SELECT Id_client, Nom, Prenom FROM `client` ORDER BY Nom";
+    $result = mysqli_query($conn, $sql);
+
+    while($row = mysqli_fetch_array($result)){
+        $id = $row['Id_client'];
+        $nom = $row['Nom'];
+        $prenom = $row['Prenom'];
+        if ($id!=$id_client_rdv) {
+            echo "<option value='$id'>$nom $prenom</option>";
+        }else{
+            echo "<option value='$id' selected>$nom $prenom</option>";
+        }
+    }
+}

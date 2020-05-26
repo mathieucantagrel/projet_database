@@ -106,10 +106,11 @@ if ($id_client2!=NULL){
                     Patient 1 :
                 </td>
                 <td>
-                    <input type=\"text\" value=\"".$donnees_client1['Nom']."\" name=\"nom1\" required>
-                </td>
-                <td>
-                    <input type=\"text\" value=\"".$donnees_client1['Prenom']."\" name=\"prenom1\" required>
+                    <select name='Id_client1'>
+                    ";affichage_select_psy($id_client1);
+
+                    echo "
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -117,10 +118,12 @@ if ($id_client2!=NULL){
                     Patient 2 (optionnel) :
                 </td>
                 <td>
-                    <input type=\"text\" value=\"";if ($id_client2!=NULL){echo $donnees_client2['Nom'];} echo "\" name=\"nom2\">
-                </td>
-                <td>
-                    <input type=\"text\" value=\"";if ($id_client2!=NULL){echo $donnees_client2['Prenom'];} echo "\" name=\"prenom2\">
+                    <select name=\"Id_client2\">
+                    <option value='NULL'> </option>
+                    ";affichage_select_psy($id_client2);
+
+                    echo "
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -128,10 +131,12 @@ if ($id_client2!=NULL){
                     Patient 3 (optionnel) :
                 </td>
                 <td>
-                    <input type=\"text\" value=\""; if ($id_client3!=NULL){echo $donnees_client3['Nom'];} echo "\" name=\"nom3\">
-                </td>
-                <td>
-                    <input type=\"text\" value=\""; if ($id_client3!=NULL){echo $donnees_client3['Prenom'];} echo "\" name=\"prenom3\">
+                    <select name=\"Id_client3\">
+                    <option value='NULL'> </option>
+                    ";affichage_select_psy($id_client2);
+
+                    echo "
+                    </select>
                 </td>
             </tr>";
 
