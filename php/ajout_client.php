@@ -16,9 +16,7 @@ $moyen_connu = isset($_POST["moyen_connu"]) ? $_POST["moyen_connu"] : NULL;
 $genre = isset($_POST["genre"]) ? $_POST["genre"] : NULL;
 $couple = isset($_POST["couple"]) ? $_POST["couple"] : NULL;
 $profession = isset($_POST['profession']) ? $_POST['profession'] : NULL;
-$couple_avec_nom = NULL;
-$couple_avec_prenom = NULL;
-$id_couple_avec = NULL;
+$id_couple_avec = isset($_POST['id_couple']) ? $_POST['id_couple'] : NULL;
 
 if ($couple === "oui")
 {

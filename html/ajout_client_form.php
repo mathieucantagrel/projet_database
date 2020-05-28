@@ -1,3 +1,9 @@
+<?php
+
+include '../php/Affichage_select_client.php';
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -75,9 +81,9 @@
                 <label for="">En couple ?</label>
             </td>
             <td>
-                <input type="radio" id="Oui" name="couple" value="oui" onclick="affiche('1','2','3','4')" checked>
+                <input type="radio" id="Oui" name="couple" value="oui" onclick="affiche('1','2')" checked>
                 <label for="Oui">Oui</label>
-                <input type="radio" id="non" name="couple" value="non" onclick="pasaffiche('1','2','3','4')">
+                <input type="radio" id="non" name="couple" value="non" onclick="pasaffiche('1','2')">
                 <label for="non">Non</label>
             </td>
         </tr>
@@ -85,21 +91,14 @@
 
         <tr>
             <td>
-                <label id='1'>Nom du partenaire :</label>
+                <label id='1'>partenaire (optionel):</label>
             </td>
             <td>
                 <label>
-                    <input type="text" id='2' name="couple_avec_nom">
-                </label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label id='3'>Prénom du partenaire :</label>
-            </td>
-            <td>
-                <label>
-                    <input type="text"  id='4' name="couple_avec_prenom">
+                    <select name="id_partenaire" id="2">
+                        <option value="NULL"> </option>
+                        <?php affichage_select()?>
+                    </select>
                 </label>
             </td>
         </tr>
@@ -127,20 +126,17 @@
 
 
     <script type="text/javascript">
-        function affiche(div1, div2, div3, div4)
+        function affiche(div1, div2)
         {
             document.getElementById(div2).style.display = '';
             document.getElementById(div1).style.display = '';
-            document.getElementById(div3).style.display = '';
-            document.getElementById(div4).style.display = '';
+
         }
 
-        function pasaffiche(div1, div2, div3, div4)
+        function pasaffiche(div1, div2)
         {
             document.getElementById(div2).style.display = 'none';
             document.getElementById(div1).style.display = 'none';
-            document.getElementById(div3).style.display = 'none';
-            document.getElementById(div4).style.display = 'none';
         }
 
 
