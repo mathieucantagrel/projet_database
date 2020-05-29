@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td class = "buuton">
-                <a href="Historique_client.php"><input type="submit" name="" value="historique des rendez-vous"></a>
+                <a href="Historique_client.php"><input type="submit" name="" value="Historique des rendez-vous"></a>
             </td>
         </tr>
         <tr>

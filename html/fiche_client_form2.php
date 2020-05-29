@@ -142,7 +142,7 @@ $result2 = mysqli_query($conn, $sql2);
             <td>
 
                     <input type="text" name="id_client" value="<?php echo $client?>" style="display: none">
-                    <input class="buuton" type="submit" value="historique des rendez-vous">
+                    <input class="buuton" type="submit" value="Historique des rendez-vous">
 
             </td>
             <td>

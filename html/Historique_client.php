@@ -28,17 +28,13 @@ $result = mysqli_query($conn, $sql);
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../style/fiche_client.css">
-    <title>Document</title>
+    <title>Séance</title>
 </head>
 <body>
 <div id="main_content">
 
     <table>
-        <tr>
-            <td class = "buuton">
-                <a href="<?php if ($log=="client"){echo "accueil_client_form.php";}else{echo"fiche_client_form.php";}?>"><input type="button" value="retour" ></a>
-            </td>
-        </tr>
+
         <?php
 
         while($rows = mysqli_fetch_array($result)){
@@ -57,8 +53,10 @@ $result = mysqli_query($conn, $sql);
                     <td></td>
                   </tr>
                   <tr>
-                  <td></td>
-                    <td>
+                  <td></td>";
+                if ($log=="psy")
+                {
+                echo "<td>
                         Remarques :
                     </td>
                     <td>
@@ -67,6 +65,17 @@ $result = mysqli_query($conn, $sql);
                   </tr>
                   <tr>
                   <td></td>
+                    <td>
+                        Anxiété :
+                    </td>
+                    <td>
+                    ".$rows['Note_anxiete']."
+                    </td>
+                  </tr>
+                  <tr>
+                  <td></td>";
+                }
+                echo "                    
                     <td>
                         Moyen de paiement :
                     </td>
@@ -89,9 +98,13 @@ $result = mysqli_query($conn, $sql);
         }
 
         ?>
+        <tr>
+            <td>
+                <a href="<?php if ($log=="client"){echo "accueil_client_form.php";}else{echo"fiche_client_form.php";}?>"><input class = "buuton" type="button" value="Retour" ></a>
+            </td>
+        </tr>
     </table>
 </div>
 </body>
 </html>
 
-<!--TODO : modifier bouton retour-->

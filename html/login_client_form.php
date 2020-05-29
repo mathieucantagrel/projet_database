@@ -24,7 +24,6 @@
 
             <input class="create" type="submit" name="login_btn" value="Connexion">
             <a href="register_form.php">Tu n'as pas de compte ? Clique ici !</a>
-            <br> <a href="login_psy_form.php">Tu es le psy ?</a>
         </form>
     </div>
 </body>
