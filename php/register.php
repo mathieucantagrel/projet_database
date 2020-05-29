@@ -47,7 +47,8 @@ if (isset($_POST['register_btn']) && !empty($_POST))
         {
             if ($count2 == 1)
             {
-                $sql="UPDATE client SET Mdp = '$Password' WHERE Email ='$Email'";
+                $Password_hashed = password_hash($Password, PASSWORD_DEFAULT);
+                $sql="UPDATE client SET Mdp = '$Password_hashed' WHERE Email ='$Email'";
                 mysqli_query($conn,$sql);
                 header("location:../html/login_client_form.php");
             }
