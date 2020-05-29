@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+if ($_SESSION['Login']=='psy'){
+    $id='all';
+}elseif ($_SESSION['Login']=='client'){
+    $id=$_SESSION['id_client'];
+}
+
 include('conn.php');
 require('library/mc_table.php');
 
@@ -32,19 +40,19 @@ $resultat_semaine = mysqli_query($conn, $sql);
 $h = date('H:i:s', strtotime("08:00:00"));
 while ($h!= "20:30:00"){
 
-    $cell_lundi = generation_cell($lundi, $resultat_semaine, $h, $conn);
+    $cell_lundi = generation_cell($lundi, $resultat_semaine, $h, $conn, $id);
 
-    $cell_mardi = generation_cell($mardi, $resultat_semaine, $h, $conn);
+    $cell_mardi = generation_cell($mardi, $resultat_semaine, $h, $conn, $id);
 
-    $cell_mercredi = generation_cell($mercreci, $resultat_semaine, $h, $conn);
+    $cell_mercredi = generation_cell($mercreci, $resultat_semaine, $h, $conn, $id);
 
-    $cell_jeudi = generation_cell($jeudi, $resultat_semaine, $h, $conn);
+    $cell_jeudi = generation_cell($jeudi, $resultat_semaine, $h, $conn, $id);
 
-    $cell_vendredi = generation_cell($vendredi, $resultat_semaine, $h, $conn);
+    $cell_vendredi = generation_cell($vendredi, $resultat_semaine, $h, $conn, $id);
 
-    $cell_samedi = generation_cell($samedi, $resultat_semaine, $h, $conn);
+    $cell_samedi = generation_cell($samedi, $resultat_semaine, $h, $conn, $id);
 
-    $cell_dimanche = generation_cell($dimanche,$resultat_semaine, $h, $conn);
+    $cell_dimanche = generation_cell($dimanche,$resultat_semaine, $h, $conn, $id);
 
     $h2 = date("H:i", strtotime($h));
 
@@ -56,7 +64,7 @@ while ($h!= "20:30:00"){
 
 $pdf->Output();
 
-function generation_cell($jour, $resultat_semaine, $h, $conn){
+function generation_cell($jour, $resultat_semaine, $h, $conn, $id){
 
     $cell = "";
 
@@ -65,6 +73,14 @@ function generation_cell($jour, $resultat_semaine, $h, $conn){
             $id_client1 = $row['Id_client1'];
             $id_client2 = $row['Id_client2'];
             $id_client3 = $row['Id_client3'];
+
+            if ($id!='psy'){
+                if ($id!=$id_client1&&$id!=$id_client2&&$id!=$id_client3){
+                    $cell = "X";
+                    return $cell;
+                }
+            }
+
             $sql = "SELECT Nom,Prenom FROM `client` 
                     WHERE Id_client='$id_client1' OR 
                     Id_client='$id_client2' OR 
